@@ -1,0 +1,45 @@
+//WAP to insert number at a given location in an array with use of user defined functions.
+
+#include <stdio.h>
+
+void insertNum(int arr[], int size, int num, int pos) {
+    if (pos < 0 || pos > size) {
+        printf("Invalid position. Please enter a position between 0 and %d.\n", size);
+        return;
+    }
+    
+    for (int i = size; i > pos; i--) {
+        arr[i] = arr[i - 1];
+    }
+    
+    arr[pos] = num;
+}
+
+int main() {
+    int arr[100], size, num, pos;
+
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    printf("Enter %d elements:\n", size);
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter the number to insert: ");
+    scanf("%d", &num);
+
+    printf("Enter the position to insert the number (0 to %d): ", size);
+    scanf("%d", &pos);
+
+    insertNum(arr, size, num, pos);
+    size++; 
+
+    printf("Array after insertion:\n");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
